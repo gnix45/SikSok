@@ -50,29 +50,51 @@
             font-size: 1em;
             line-height: 1.5;
         }
+        .button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Our Services</h1>
-        <div class="services">
-            <div class="service">
-                <h2>Web Development</h2>
-                <p>We create modern, fast, and responsive websites tailored to your needs.</p>
-            </div>
-            <div class="service">
-                <h2>SEO Optimization</h2>
-                <p>Improve your search engine rankings with our expert SEO services.</p>
-            </div>
-            <div class="service">
-                <h2>Graphic Design</h2>
-                <p>Creative and engaging designs that make your brand stand out.</p>
-            </div>
-            <div class="service">
-                <h2>Marketing Strategy</h2>
-                <p>Grow your business with our customized digital marketing strategies.</p>
-            </div>
+        <div class="services" id="services">
+            <!-- Services will be added here dynamically -->
         </div>
     </div>
+
+    <script>
+        const servicesData = [
+            { title: "Web Development", description: "We create modern, fast, and responsive websites tailored to your needs." },
+            { title: "SEO Optimization", description: "Improve your search engine rankings with our expert SEO services." },
+            { title: "Graphic Design", description: "Creative and engaging designs that make your brand stand out." },
+            { title: "Marketing Strategy", description: "Grow your business with our customized digital marketing strategies." }
+        ];
+
+        const servicesContainer = document.getElementById("services");
+
+        servicesData.forEach(service => {
+            const serviceDiv = document.createElement("div");
+            serviceDiv.classList.add("service");
+
+            serviceDiv.innerHTML = `
+                <h2>${service.title}</h2>
+                <p>${service.description}</p>
+                <button class="button" onclick="alert('Learn more about ${service.title}')">Learn More</button>
+            `;
+            
+            servicesContainer.appendChild(serviceDiv);
+        });
+    </script>
 </body>
 </html>
